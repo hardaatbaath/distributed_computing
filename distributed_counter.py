@@ -5,7 +5,7 @@ import os
 import redis
 
 # Connect to Redis
-redis_url = 'rediss://default:AVNS_6NSpId2vs7NJtw1T1JB@redis-3e1b6ad1-shadabkalim375-47b0.a.aivencloud.com:11899'
+redis_url = 
 r = redis.Redis.from_url(redis_url)
 
 # Define the worker function
