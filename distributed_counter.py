@@ -5,6 +5,7 @@ import os
 import redis
 
 # Connect to Redis
+redis_url = 'rediss://default:AVNS_6NSpId2vs7NJtw1T1JB@redis-3e1b6ad1-shadabkalim375-47b0.a.aivencloud.com:11899'
 r = redis.Redis.from_url(redis_url)
 
 # Define the worker function
@@ -13,20 +14,8 @@ def worker():
         task = r.lpop('task_queue')
         if task is None:
             break
-        # Simulate a long-running task
-        time.sleep(120)
-        print(f"Processing task: {task}")
-        # Save the state to Redis
-        r.set(task, "processed")
-
-
-def worker():
-    while True:
-        task = r.lpop('task_queue')
-        if task is None:
-            break
         # Perform a long-running task
-        for i in range(1, 50000001):  # Count from 1 to 5 million
+        for i in range(1, 200000001):  # Count from 1 to 20 million
             if i % 10000000 == 0:  # Print a message every million iterations
                 print(f"Task {task}: Reached {i}")
         print(f"Finished task: {task}")
